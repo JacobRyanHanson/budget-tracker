@@ -9,6 +9,12 @@ fetch("/api/transaction")
     // save db data on global variable
     transactions = data;
 
+    localStorage.setItem('data', JSON.stringify(transactions));
+  })
+  .catch(err => {
+    transactions = JSON.parse(localStorage.getItem('data'));
+  })
+  .then(() => {
     populateTotal();
     populateTable();
     populateChart();
@@ -98,10 +104,13 @@ function sendTransaction(isAdding) {
     value: amountEl.value,
     date: new Date().toISOString()
   };
-
+  
   // if subtracting funds, convert amount to negative number
   if (!isAdding) {
     transaction.value *= -1;
+    alert("Subtracted: " + transaction.value);
+  } else {
+    alert("Added: " + transaction.value);
   }
 
   // add to beginning of current array of data
