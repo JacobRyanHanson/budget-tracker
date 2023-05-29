@@ -12,6 +12,9 @@
     "type": "git",
     "url": "git+https://github.com/coding-boot-camp/unit18hw.git"
   },
+    "engines": {
+    "node": "16.20.0"
+  },
   "author": "",
   "license": "ISC",
   "bugs": {
